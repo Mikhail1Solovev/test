@@ -1,0 +1,19 @@
+{% extends "network/base.html" %}
+
+{% block content %}
+<h2>{{ node.name }}</h2>
+<p>Email: {{ node.email }}</p>
+<p>Address: {{ node.country }}, {{ node.city }}, {{ node.street }} {{ node.house_number }}</p>
+<p>Debt: ${{ node.debt }}</p>
+{% if node.supplier %}
+<p>Supplier: <a href="/{{ node.supplier.id }}/">{{ node.supplier.name }}</a></p>
+{% endif %}
+<h3>Products:</h3>
+<ul>
+    {% for product in node.products.all %}
+    <li>{{ product.name }} ({{ product.model }}) - {{ product.release_date }}</li>
+    {% empty %}
+    <li>No products available.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

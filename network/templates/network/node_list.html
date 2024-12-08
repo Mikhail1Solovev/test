@@ -1,0 +1,10 @@
+{% extends "network/base.html" %}
+
+{% block content %}
+<h2>Network Nodes</h2>
+<ul>
+    {% for node in nodes %}
+    <li><a href="/{{ node.id }}/">{{ node.name }} ({{ node.country }} - {{ node.city }})</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}
